@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import ImageContainer from "../../components/image-container/ImageContainer.js";
 
 const StyledProducts = styled.div`
   width: 60vw;
@@ -20,7 +19,6 @@ const StyledProducts = styled.div`
 `;
 
 const Products = props => {
-  console.log(props.beer);
   return (
     <StyledProducts>
       <h4>{props.beer.name}</h4>
