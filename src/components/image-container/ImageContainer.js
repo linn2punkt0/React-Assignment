@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledImageContainer = styled.div`
-  height: 50%;
+  height: 60%;
 
   img {
     height: 100%;
+    margin-bottom: 15px;
   }
 `;
 

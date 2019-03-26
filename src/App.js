@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import FeaturedBeer from "./components/featured-beer/FeaturedBeer.js";
 import Button from "./components/button/Button.js";
+import Products from "./components/products/Products.js";
+import Logo from "./components/logo/Logo.js";
 
 class App extends Component {
   state = {
@@ -19,7 +20,9 @@ class App extends Component {
   fetchRandomBeer = () => {
     fetch("https://api.punkapi.com/v2/beers/random")
       .then(response => response.json())
-      .then(data => this.setState({ beer: data[0] }))
+      .then(data => {
+        this.setState({ beer: data[0] });
+      })
       .catch(error => console.error(error));
   };
 
@@ -27,7 +30,7 @@ class App extends Component {
     fetch("https://api.punkapi.com/v2/beers?per_page=80")
       .then(response => response.json())
       .then(data =>
-        this.setState({ allBeers: [...this.state.allBeers, data[0]] })
+        this.setState({ allBeers: [...this.state.allBeers, ...data] })
       )
       .catch(error => console.error(error));
   };
@@ -36,18 +39,27 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <FeaturedBeer
-            name={this.state.beer.name}
-            tagline={this.state.beer.tagline}
-            img={this.state.beer.image_url}
-            description={this.state.beer.description}
-            food={
-              this.state.beer.food_pairing
-                ? this.state.beer.food_pairing
-                : this.state.standardImage
-            }
-          />
-          <Button onClick={this.fetchRandomBeer}>Get another beer</Button>
+          <Logo />
+          {this.state.beer !== "" && (
+            <FeaturedBeer
+              name={this.state.beer.name}
+              tagline={this.state.beer.tagline}
+              img={
+                this.state.beer.image_url
+                  ? this.state.beer.image_url
+                  : this.state.standardImage
+              }
+              description={this.state.beer.description}
+              food={this.state.beer.food_pairing}
+            />
+          )}
+
+          <Button onClick={this.fetchRandomBeer}>Get another beer!</Button>
+          <div>
+            {this.state.allBeers.map(element => (
+              <Products key={element.id} beer={element} />
+            ))}
+          </div>
         </header>
       </div>
     );
