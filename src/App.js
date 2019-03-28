@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import FeaturedBeer from "./components/featured-beer/FeaturedBeer.js";
-import Button from "./components/button/Button.js";
-import Products from "./components/products/Products.js";
-import Logo from "./components/logo/Logo.js";
+import Navbar from "./components/Navbar.js";
+import Home from "./components/HomePage.js";
+import ProductPage from "./components/ProductPage";
+import SingleProductPage from "./components/SingleProductPage";
+import { Router } from "@reach/router";
 
 class App extends Component {
   state = {
@@ -39,28 +40,18 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Logo />
-          {this.state.beer !== "" && (
-            <FeaturedBeer
-              name={this.state.beer.name}
-              tagline={this.state.beer.tagline}
-              img={
-                this.state.beer.image_url
-                  ? this.state.beer.image_url
-                  : this.state.standardImage
-              }
-              description={this.state.beer.description}
-              food={this.state.beer.food_pairing}
-            />
-          )}
-
-          <Button onClick={this.fetchRandomBeer}>Get another beer!</Button>
-          <div>
-            {this.state.allBeers.map(element => (
-              <Products key={element.id} beer={element} />
-            ))}
-          </div>
+          <Navbar />
         </header>
+        <Router>
+          <Home
+            standardImg={this.state.standardImage}
+            beer={this.state.beer}
+            fetchRandomBeer={this.fetchRandomBeer}
+            path="/"
+          />
+          <ProductPage allBeers={this.state.allBeers} path="/products" />
+          <SingleProductPage path="/products/:id" />
+        </Router>
       </div>
     );
   }

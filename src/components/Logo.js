@@ -15,6 +15,10 @@ const StyledLogo = styled.div`
     transform: rotate(-8deg);
     padding-bottom: 20px;
   }
+  @media screen and (min-width: 800px) {
+    max-width: 400px;
+    margin: 10px;
+  }
 `;
 
 const Logo = () => {
@@ -22,7 +26,7 @@ const Logo = () => {
     <StyledLogo>
       <img
         src="https://uploads-ssl.webflow.com/5b4c9b47bd74208a52f18519/5be5d66207b66f57589c1b89_brewdog-logo_white.png"
-        alt="logo"
+        alt="brewdog-logo"
       />
       <h4>Get a random brew!</h4>
     </StyledLogo>

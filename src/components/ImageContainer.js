@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledImageContainer = styled.div`
-  height: 60%;
+  height: 60vh;
 
   img {
     height: 100%;

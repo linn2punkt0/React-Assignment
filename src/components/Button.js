@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 60vw;
+  min-width: 300px;
+  max-width: 700px;
   height: 10vh;
   margin: 0 10px 10px 10px;
   padding: 10px 10px 6px 10px;
@@ -14,7 +15,7 @@ const Button = styled.button`
   border: none;
   box-shadow: 5px 5px 0px 0px #242424;
   transition: 0.3s ease-in;
-  z-index: 2;
+  z-index: 5;
 
   &:hover {
     background: #e7a61a;

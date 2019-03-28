@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import React from "react";
+import { Link } from "@reach/router";
 
-const StyledProducts = styled.div`
-  width: 60vw;
+const StyledProducts = styled(Link)`
+  width: auto;
   margin: 10px;
   font-size: 20px;
   background: white;
@@ -20,9 +21,9 @@ const StyledProducts = styled.div`
 
 const Products = props => {
   return (
-    <StyledProducts>
+    <StyledProducts to={`/products/${props.beer.id}`}>
       <h4>{props.beer.name}</h4>
-      <img src={props.beer.image_url} alt="image" />
+      <img src={props.beer.image_url} alt="product" />
     </StyledProducts>
   );
 };

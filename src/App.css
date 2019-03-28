@@ -1,11 +1,11 @@
 .App {
+  min-height: 100vh;
   text-align: center;
   background-color: #1d1d1d;
   font-family: "Expletus Sans", cursive;
 }
 
 .App-header {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
